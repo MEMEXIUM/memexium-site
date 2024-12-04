@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMEXIUM - The Future of Memecoins</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0F0C29, #302B63, #24243e);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 12, 41, 0.9);
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #8E2DE2;
+        }
+        .logo {
+            font-size: 1.5rem;
+            color: #8E2DE2;
+            font-weight: 700;
+        }
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 150px 20px;
+            background: linear-gradient(135deg, #0F0C29, #302B63, #24243e);
+            position: relative;
+            color: #E9E9E9;
+        }
+        header img {
+            width: 200px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% {
+                transform: scale(1.05);
+                filter: brightness(1.5);
+            }
+        }
+        header h1 {
+            font-size: 4rem;
+            margin: 20px 0;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #4A00E0, #8E2DE2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+        .cta-buttons {
+            margin-top: 40px;
+        }
+        .cta-buttons a {
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+            padding: 20px 40px;
+            border-radius: 50px;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 15px rgba(72, 61, 139, 0.4);
+        }
+        .cta-buttons a:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(72, 61, 139, 0.6);
+        }
+        /* SECTION STYLES */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1E1E40, #3A3B52);
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(20, 10, 60, 0.6), rgba(70, 50, 120, 0.5));
+            z-index: -1;
+            animation: gradientMove 15s infinite alternate;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .about-content {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+            padding: 20px;
+        }
+        .about-content h3 {
+            font-size: 2.5rem;
+            color: #8E2DE2;
+            margin-bottom: 20px;
+        }
+        .about-content p {
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .highlight {
+            color: #4A00E0;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .token {
+            background: rgba(30, 30, 70, 0.9);
+            margin: 20px;
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 300px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+        .token:hover {
+            transform: translateY(-10px);
+        }
+        .token img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .token:hover img {
+            transform: rotate(10deg);
+        }
+        .token h3 {
+            color: #8E2DE2;
+            font-size: 1.5rem;
+        }
+        /* SOCIAL LINKS */
+        .social-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 2rem;
+            margin: 10px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #8E2DE2;
+        }
+        footer {
+            background: linear-gradient(135deg, #0F0C29, #302B63, #24243e);
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0px -2px 20px rgba(0, 0, 0, 0.5);
+            color: #999;
+        }
+        /* CALCULATOR SECTION */
+        .calc-section {
+            padding: 50px;
+            background: #202060;
+            border-radius: 20px;
+            margin-top: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ffffff;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5);
+        }
+        .calc-section input {
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            width: 250px;
+        }
+        .calc-section button {
+            padding: 15px;
+            font-size: 1rem;
+            background: #4A00E0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .calc-section button:hover {
+            background: #8E2DE2;
+        }
+        .visitor-counter {
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #8E2DE2;
+        }
+        .tiktok-embed-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) + 1 : 1;
+        localStorage.setItem('visitCount', visitCount);
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo">MEMEXIUM</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tokens">Tokens</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <img src="https://imgur.com/CD8Yfu7.jpg" alt="MEMEXIUM Logo">
+        <h1>Welcome to MEMEXIUM</h1>
+        <p>The Ultimate Memecoin Experience - Join the Movement Now!</p>
+        <div class="cta-buttons">
+            <a href="https://t.me/+F-CnSmRphbtmMmE8" target="_blank">Join Us on Telegram</a>
+            <a href="https://x.com/MEMEXIUM" target="_blank">Follow Us on Twitter</a>
+            <a href="#">Claim $ELONIUX Now!</a>
+        </div>
+    </header>
+    
+    <section id="about" class="section">
+        <div class="about-content">
+            <h3>About MEMEXIUM</h3>
+            <p>Welcome to MEMEXIUM, the ultimate crossover between internet culture, memes, and the future of finance. MEMEXIUM is a memecoin ecosystem built on creativity, humor, and a shared love for the iconic personalities that have shaped our modern age. We're here to redefine the way people engage with cryptocurrency by making it <span class="highlight">fun, accessible, and community-driven</span>.</p>
+            <p>Our project is driven by the spirit of <span class="highlight">innovation</span>, combining blockchain technology with meme magic to create a new kind of experience in the crypto world. MEMEXIUM isn’t just about tokens; it's about building a <span class="highlight">thriving community</span> that has real influence. From our early memecoins like <strong>$ELONIUX</strong> and <strong>$TRUMPONIUX</strong>, to the grand reveal of our flagship token <strong>$MEMEXIUM</strong>, we are cultivating an ecosystem where everyone has a <span class="highlight">voice and a role to play</span>.</p>
+            <p>Our ultimate goal is to create a token that goes beyond just being a meme—it's a <span class="highlight">cultural phenomenon</span>. With community-driven decision-making, exclusive rewards, and an ever-growing network of engaged members, MEMEXIUM aims to evolve from a fun project into a genuine force within the crypto world. Join us, be part of the movement, and let’s meme our way to the future together!</p>
+        </div>
+    </section>
+
+    <section id="tokens" class="section">
+        <h2>Our Tokens</h2>
+        <div class="token">
+            <img src="https://imgur.com/CVSo5vw.jpg" alt="$ELONIUX Logo">
+            <h3>$ELONIUX</h3>
+            <p>The first memecoin inspired by Elon Musk and his meme energy. Get on board and join us on the journey to Mars!</p>
+        </div>
+        <div class="token">
+            <img src="https://imgur.com/5e3MhWx.jpg" alt="$TRUMPONIUX Logo">
+            <h3>$TRUMPONIUX</h3>
+            <p>Bold, brash, and unapologetic – the memecoin for those who aren't afraid to make a statement.</p>
+        </div>
+    </section>
+
+    <section id="calculator" class="section calc-section">
+        <h2>Token Value Calculator</h2>
+        <input type="number" id="tokenAmount" placeholder="Enter token amount">
+        <button onclick="calculateValue()">Calculate Value</button>
+        <p id="valueResult"></p>
+    </section>
+    <script>
+        function calculateValue() {
+            const tokenAmount = document.getElementById('tokenAmount').value;
+            const tokenValue = 0.01; // Example rate per token
+            const result = tokenAmount * tokenValue;
+            document.getElementById('valueResult').innerText = `Current Value: $${result}`;
+        }
+    </script>
+
+    <section id="community" class="section">
+        <h2>Join Our Community</h2>
+        <p>Be a part of the MEMEXIUM revolution! Follow us and get exclusive updates, join in community events, and be a driving force in the memecoin movement.</p>
+        <div class="social-links">
+            <a href="https://x.com/MEMEXIUM" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://t.me/+F-CnSmRphbtmMmE8" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+            <div class="tiktok-embed-container">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@memexium" data-unique-id="memexium" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > 
+                    <section> <a target="_blank" href="https://www.tiktok.com/@memexium?refer=creator_embed">@memexium</a> </section> 
+                </blockquote> 
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 MEMEXIUM - All Rights Reserved</p>
+        <p class="visitor-counter">Visitors: <span id="visitorCount"></span></p>
+    </footer>
+    <script>
+        document.getElementById('visitorCount').innerText = visitCount;
+    </script>
+</body>
+</html>
