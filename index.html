@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMEXIUM - The Future of Memecoins</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <style>
@@ -83,20 +83,37 @@
         }
         .cta-buttons {
             margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
         .cta-buttons a {
             text-decoration: none;
             color: #ffffff;
             background: linear-gradient(135deg, #4A00E0, #8E2DE2);
-            padding: 20px 40px;
+            padding: 15px 30px;
             border-radius: 50px;
-            margin: 10px;
+            margin: 5px;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0px 4px 15px rgba(72, 61, 139, 0.4);
+            font-size: 1rem;
         }
         .cta-buttons a:hover {
             transform: scale(1.1);
             box-shadow: 0px 6px 20px rgba(72, 61, 139, 0.6);
+        }
+        /* Styl dla mniejszych ekranów */
+        @media (max-width: 768px) {
+            .cta-buttons a {
+                width: 80%;
+                text-align: center;
+                padding: 15px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
         /* SECTION STYLES */
         .section {
@@ -106,49 +123,6 @@
             border-radius: 15px;
             margin: 40px 0;
             box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(20, 10, 60, 0.6), rgba(70, 50, 120, 0.5));
-            z-index: -1;
-            animation: gradientMove 15s infinite alternate;
-        }
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .about-content {
-            font-family: 'Poppins', sans-serif;
-            color: #ffffff;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.8;
-            padding: 20px;
-        }
-        .about-content h3 {
-            font-size: 2.5rem;
-            color: #8E2DE2;
-            margin-bottom: 20px;
-        }
-        .about-content p {
-            margin-bottom: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .highlight {
-            color: #4A00E0;
-            font-weight: bold;
-            font-style: italic;
         }
         .token {
             background: rgba(30, 30, 70, 0.9);
@@ -167,10 +141,6 @@
             width: 100px;
             height: auto;
             margin-bottom: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .token:hover img {
-            transform: rotate(10deg);
         }
         .token h3 {
             color: #8E2DE2;
@@ -194,7 +164,7 @@
             box-shadow: 0px -2px 20px rgba(0, 0, 0, 0.5);
             color: #999;
         }
-        /* CALCULATOR SECTION */
+        /* CALCULATOR */
         .calc-section {
             padding: 50px;
             background: #202060;
@@ -266,11 +236,11 @@
     </header>
     
     <section id="about" class="section">
+        <h2>About MEMEXIUM</h2>
         <div class="about-content">
-            <h3>About MEMEXIUM</h3>
-            <p>Welcome to MEMEXIUM, the ultimate crossover between internet culture, memes, and the future of finance. MEMEXIUM is a memecoin ecosystem built on creativity, humor, and a shared love for the iconic personalities that have shaped our modern age. We're here to redefine the way people engage with cryptocurrency by making it <span class="highlight">fun, accessible, and community-driven</span>.</p>
-            <p>Our project is driven by the spirit of <span class="highlight">innovation</span>, combining blockchain technology with meme magic to create a new kind of experience in the crypto world. MEMEXIUM isn’t just about tokens; it's about building a <span class="highlight">thriving community</span> that has real influence. From our early memecoins like <strong>$ELONIUX</strong> and <strong>$TRUMPONIUX</strong>, to the grand reveal of our flagship token <strong>$MEMEXIUM</strong>, we are cultivating an ecosystem where everyone has a <span class="highlight">voice and a role to play</span>.</p>
-            <p>Our ultimate goal is to create a token that goes beyond just being a meme—it's a <span class="highlight">cultural phenomenon</span>. With community-driven decision-making, exclusive rewards, and an ever-growing network of engaged members, MEMEXIUM aims to evolve from a fun project into a genuine force within the crypto world. Join us, be part of the movement, and let’s meme our way to the future together!</p>
+            <p>Welcome to MEMEXIUM, the ultimate crossover between internet culture, memes, and the future of finance. MEMEXIUM is a memecoin ecosystem built on creativity, humor, and a shared love for the iconic personalities that have shaped our modern age. We're here to redefine the way people engage with cryptocurrency by making it fun, accessible, and community-driven.</p>
+            <p>Our project is driven by the spirit of innovation, combining blockchain technology with meme magic to create a new kind of experience in the crypto world. MEMEXIUM isn’t just about tokens; it's about building a thriving community that has real influence. From our early memecoins like <strong>$ELONIUX</strong> and <strong>$TRUMPONIUX</strong>, to the grand reveal of our flagship token <strong>$MEMEXIUM</strong>, we are cultivating an ecosystem where everyone has a voice and a role to play.</p>
+            <p>Our ultimate goal is to create a token that goes beyond just being a meme—it's a cultural phenomenon. With community-driven decision-making, exclusive rewards, and an ever-growing network of engaged members, MEMEXIUM aims to evolve from a fun project into a genuine force within the crypto world. Join us, be part of the movement, and let’s meme our way to the future together!</p>
         </div>
     </section>
 
@@ -310,7 +280,7 @@
             <a href="https://x.com/MEMEXIUM" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
             <a href="https://t.me/+F-CnSmRphbtmMmE8" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
             <div class="tiktok-embed-container">
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@memexium" data-unique-id="memexium" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > 
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@memexium" data-unique-id="memexium" data-embed-type="creator" style="max-width: 780px; min-width: 288px;"> 
                     <section> <a target="_blank" href="https://www.tiktok.com/@memexium?refer=creator_embed">@memexium</a> </section> 
                 </blockquote> 
                 <script async src="https://www.tiktok.com/embed.js"></script>
