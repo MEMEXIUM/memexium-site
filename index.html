@@ -1,333 +1,1974 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEMEXIUM - The Future of Memecoins</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0F0C29, #302B63, #24243e);
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        /* NAVIGATION */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 12, 41, 0.9);
-            padding: 20px 30px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #8E2DE2;
-        }
-        .logo {
-            font-size: 1.5rem;
-            color: #8E2DE2;
-            font-weight: 700;
-        }
-        /* HEADER */
-        header {
-            text-align: center;
-            padding: 150px 20px;
-            background: linear-gradient(135deg, #0F0C29, #302B63, #24243e);
-            position: relative;
-            color: #E9E9E9;
-        }
-        header img {
-            width: 200px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                filter: brightness(1);
-            }
-            50% {
-                transform: scale(1.05);
-                filter: brightness(1.5);
-            }
-        }
-        header h1 {
-            font-size: 4rem;
-            margin: 20px 0;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #4A00E0, #8E2DE2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        header p {
-            font-size: 1.5rem;
-            margin-top: 15px;
-        }
-        .cta-buttons {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        .cta-buttons a {
-            text-decoration: none;
-            color: #ffffff;
-            background: linear-gradient(135deg, #4A00E0, #8E2DE2);
-            padding: 15px 30px;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0px 4px 15px rgba(72, 61, 139, 0.4);
-        }
-        .cta-buttons a:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 6px 20px rgba(72, 61, 139, 0.6);
-        }
-        /* SECTION STYLES */
-        .section {
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #1E1E40, #3A3B52);
-            border-radius: 15px;
-            margin: 40px 0;
-            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(20, 10, 60, 0.6), rgba(70, 50, 120, 0.5));
-            z-index: -1;
-            animation: gradientMove 15s infinite alternate;
-        }
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .about-content {
-            font-family: 'Poppins', sans-serif;
-            color: #ffffff;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.8;
-            padding: 20px;
-        }
-        .about-content h3 {
-            font-size: 2.5rem;
-            color: #8E2DE2;
-            margin-bottom: 20px;
-        }
-        .about-content p {
-            margin-bottom: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .highlight {
-            color: #4A00E0;
-            font-weight: bold;
-            font-style: italic;
-        }
-        .token {
-            background: rgba(30, 30, 70, 0.9);
-            margin: 20px;
-            padding: 30px;
-            border-radius: 20px;
-            display: inline-block;
-            max-width: 300px;
-            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
-        }
-        .token:hover {
-            transform: translateY(-10px);
-        }
-        .token img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .token:hover img {
-            transform: rotate(10deg);
-        }
-        .token h3 {
-            color: #8E2DE2;
-            font-size: 1.5rem;
-        }
-        /* SOCIAL LINKS */
-        .social-links a {
-            text-decoration: none;
-            color: #ffffff;
-            font-size: 2rem;
-            margin: 10px;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #8E2DE2;
-        }
-        footer {
-            background: linear-gradient(135deg, #0F0C29, #302B63, #24243e);
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0px -2px 20px rgba(0, 0, 0, 0.5);
-            color: #999;
-        }
-        /* CALCULATOR SECTION */
-        .calc-section {
-            padding: 50px;
-            background: #202060;
-            border-radius: 20px;
-            margin-top: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #ffffff;
-            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5);
-        }
-        .calc-section input {
-            padding: 15px;
-            font-size: 1rem;
-            border-radius: 5px;
-            border: none;
-            margin-right: 10px;
-            width: 250px;
-        }
-        .calc-section button {
-            padding: 15px;
-            font-size: 1rem;
-            background: #4A00E0;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .calc-section button:hover {
-            background: #8E2DE2;
-        }
-        .visitor-counter {
-            margin-top: 40px;
-            font-size: 1.5rem;
-            color: #8E2DE2;
-        }
-        .tiktok-embed-container {
-            margin-top: 50px;
-            text-align: center;
-        }
-    </style>
-    <script>
-        let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) + 1 : 1;
-        localStorage.setItem('visitCount', visitCount);
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEMEXIUM - Website</title>
+  <style>
+    /* Resetowanie stylów */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    /* Główne tło strony */
+    body {
+      background: radial-gradient(circle, #1b1b1b 20%, #0d0d0d 80%);
+      color: #ffffff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Dynamiczne tło */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #ff00ff, #00eaff);
+      opacity: 0.3;
+      filter: blur(10px);
+      animation: floatingBackground 15s ease-in-out infinite;
+    }
+
+    @keyframes floatingBackground {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(20px, 20px); }
+    }
+
+    /* Nawigacja */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #00eaff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* Sekcje */
+    section {
+  padding: 2rem 2rem; /* Zmniejszona odległość między sekcjami */
+  text-align: center;
+}
+
+
+    /* Styl nagłówków */
+    h1, h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00eaff;
+      text-shadow: 0px 0px 10px rgba(0, 238, 255, 0.7);
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    /* Kontenery na treść */
+    .content-container {
+      margin: 2rem auto;
+      width: 80%;
+      border: 2px dashed #444;
+      border-radius: 10px;
+      padding: 2rem;
+      background: rgba(30, 30, 30, 0.7);
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">MEMEXIUM</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#tokens">Tokens</a></li>
-            <li><a href="#calculator">Calculator</a></li>
-            <li><a href="#community">Community</a></li>
-        </ul>
-    </nav>
+
+  <!-- Nawigacja -->
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#tokens">Tokens</a>
+    <a href="#about">About</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#community">Community</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  
+<!-- Sekcja Główna (Hero) -->
+<section class="hero" id="hero">
+  <img src="https://imgur.com/7H1F3s7.png" alt="MEMEXIUM Logo" class="hero-logo">
+  <h1><span class="text-highlight">MEMES</span> TO THE <span class="text-highlight">MOON</span> 🚀</h1>
+<p class="hero-description">The place where <strong>fun</strong>, <strong>community</strong> and <strong>crypto dreams</strong> collide for a journey to the moon! 🌕</p>
+
+<div class="cta-buttons">
+  <a href="#tokens" class="cta-button step-blue">💎 Explore Tokens</a>
+  <a href="#community" class="cta-button step-pink">🎉 Join Community</a>
+  <a href="#roadmap" class="cta-button step-green">🗺️ See Roadmap</a>
+</div>
+
+
+</section>
+
+
+
+
+
+<style>
+  <style>
+/* Sekcja Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Pełna wysokość ekranu */
+  text-align: center;
+  background: linear-gradient(135deg, #1b1b1b, #0d0d0d); /* Gradientowe tło */
+  color: #fff;
+  padding: 0 2rem;
+}
+
+/* Duże Logo – centralny punkt strony */
+.hero-logo {
+  width: 500px !important; /* Wymuszenie szerokości */
+  height: auto !important; /* Zachowanie proporcji */
+  margin-bottom: 2rem;
+  animation: pulse 2.5s infinite;
+  filter: drop-shadow(0 0 40px rgba(0, 238, 255, 0.8));
+}
+.hero {
+  width: 100%; /* Pełna szerokość */
+  max-width: none; /* Usunięcie maksymalnej szerokości */
+  overflow: visible; /* Zapobieganie przycinaniu */
+}
+
+
+/* Nagłówek – wyrazisty z gradientem */
+.hero h1 {
+  font-size: 6rem; /* Duży nagłówek */
+  font-weight: bold;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: linear-gradient(to right, #00eaff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradient w tekście */
+  text-shadow: 0 0 25px rgba(0, 238, 255, 0.8);
+}
+
+/* Opis – powiększony z przestrzenią */
+.hero-description {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #ddd;
+  max-width: 1000px; /* Rozszerzenie opisu */
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Przycisków CTA – większy rozmiar */
+.cta-buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.cta-button {
+  text-decoration: none;
+  padding: 1rem 3rem; /* Większe przyciski */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00eaff;
+  background: transparent;
+  border: 3px solid #00eaff;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.5);
+}
+
+.cta-button:hover {
+  background: #00eaff;
+  color: #1b1b1b;
+  box-shadow: 0 0 25px #00eaff;
+  transform: translateY(-5px);
+}
+
+/* Efekt Pulsowania dla Logo */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00eaff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #bbb;
+}
+
+/* Kontener przycisków CTA */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Stylizacja przycisków CTA */
+<div class="cta-buttons">
+  <a href="#tokens" class="cta-button step-blue">💎 Explore Tokens</a>
+  <a href="#community" class="cta-button step-pink">🎉 Join Community</a>
+  <a href="#roadmap" class="cta-button step-green">🗺️ See Roadmap</a>
+  <a href="#updates" class="cta-button step-purple">📢 Get Updates</a>
+  <a href="#contact" class="cta-button step-orange">✉️ Contact Us</a>
+</div>
+
+}
+ansform: translateY(-3px); /* Delikatne podniesienie */
+}
+
+/* Efekt Pulsowania dla Logo */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Efekt hover dla Logo */
+.hero-logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(0, 238, 255, 0.9));
+}
+</style>
+
+
+
+  <!-- Sekcja Hero -->
+ <!-- Tło -->
+<div class="background"></div>
+
+
+
+
+<style>
+  /* Sekcja Hero */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero img {
+    width: 200px;
+    animation: pulse 2s infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(0, 238, 255, 0.6));
+    transition: transform 0.3s ease;
+  }
+
+  .hero img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(0, 238, 255, 0.9));
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00eaff, #ff00ff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 15px rgba(255, 0, 255, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons a {
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border: 2px solid #00eaff;
+    color: #00eaff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .cta-buttons a:hover {
+    background: #00eaff;
+    color: #000;
+    box-shadow: 0px 0px 15px #00eaff;
+  }
+</style>
+
+<section class="tokens" id="tokens">
+  <h2 class="section-title">💎 Explore Our Tokens</h2>
+<p class="section-subtitle">
+  🚀 Explore our <span class="highlight-text">unique memecoins</span> – each with its own <strong>story</strong>, <strong>humor</strong>, and <strong>community</strong>!
+</p>
+
+  <div class="tokens-container">
+    <!-- Token 1 -->
+    <a href="https://example.com/santoniux" class="token-card step-blue">
+      <div class="card-inner">
+        <div class="card-front" style="background-image: url('https://i.imgur.com/LM3PlaD.png');">
+          <!-- Usunięto tekst z przodu -->
+        </div>
+        <div class="card-back">
+          <h3>$SANTONIUX</h3>
+          <p>Ho-ho-ho! Santa's got crypto for you! 🎅</p>
+          <p>#SantaCrypto</p>
+
+        </div>
+      </div>
+    </a>
+
+    <!-- Token 2 -->
+    <a href="https://example.com/eloniux" class="token-card step-pink">
+      <div class="card-inner">
+        <div class="card-front" style="background-image: url('https://i.imgur.com/LM3PlaD.png');">
+          <!-- Usunięto tekst z przodu -->
+        </div>
+        <div class="card-back">
+          <h3>$ELONIUX</h3>
+          <p>To the moon... but first, memes! 🚀</p>
+          <p>#ToTheMars</p>
+
+        </div>
+      </div>
+    </a>
+
+    <!-- Token 3 -->
+    <a href="https://example.com/trumponiux" class="token-card step-green">
+      <div class="card-inner">
+        <div class="card-front" style="background-image: url('https://i.imgur.com/LM3PlaD.png');">
+          <!-- Usunięto tekst z przodu -->
+        </div>
+        <div class="card-back">
+          <h3>$TRUMPONIUX</h3>
+          <p>Make memecoins great again! 🎩</p>
+          <p>#HODLTheWall</p>
+
+        </div>
+      </div>
+    </a>
     
-    <header>
-        <img src="https://imgur.com/CD8Yfu7.jpg" alt="MEMEXIUM Logo">
-        <h1>Welcome to MEMEXIUM</h1>
-        <p>The Ultimate Memecoin Experience - Join the Movement Now!</p>
-        <div class="cta-buttons">
-            <a href="https://t.me/+F-CnSmRphbtmMmE8" target="_blank">Join Us on Telegram</a>
-            <a href="https://x.com/MEMEXIUM" target="_blank">Follow Us on Twitter</a>
-            <a href="#">Claim $ELONIUX Now!</a>
-        </div>
-    </header>
-    
-    <section id="about" class="section">
-        <div class="about-content">
-            <h3>About MEMEXIUM</h3>
-            <p>Welcome to MEMEXIUM, the ultimate crossover between internet culture, memes, and the future of finance. MEMEXIUM is a memecoin ecosystem built on creativity, humor, and a shared love for the iconic personalities that have shaped our modern age. We're here to redefine the way people engage with cryptocurrency by making it <span class="highlight">fun, accessible, and community-driven</span>.</p>
-            <p>Our project is driven by the spirit of <span class="highlight">innovation</span>, combining blockchain technology with meme magic to create a new kind of experience in the crypto world. MEMEXIUM isn’t just about tokens; it's about building a <span class="highlight">thriving community</span> that has real influence. From our early memecoins like <strong>$ELONIUX</strong> and <strong>$TRUMPONIUX</strong>, to the grand reveal of our flagship token <strong>$MEMEXIUM</strong>, we are cultivating an ecosystem where everyone has a <span class="highlight">voice and a role to play</span>.</p>
-            <p>Our ultimate goal is to create a token that goes beyond just being a meme—it's a <span class="highlight">cultural phenomenon</span>. With community-driven decision-making, exclusive rewards, and an ever-growing network of engaged members, MEMEXIUM aims to evolve from a fun project into a genuine force within the crypto world. Join us, be part of the movement, and let’s meme our way to the future together!</p>
-        </div>
-    </section>
+    <!-- Token 4 -->
+   <a class="token-card step-purple">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-content">
+        <h3>Coming Soon...</h3>
+        <p id="countdown1">Loading...</p>
+      </div>
+    </div>
+    <div class="card-back">
+      <p>New prime-level excitement is loading! 📦</p>
+    </div>
+  </div>
+</a>
 
-    <section id="tokens" class="section">
-        <h2>Our Tokens</h2>
-        <div class="token">
-            <img src="https://imgur.com/CVSo5vw.jpg" alt="$ELONIUX Logo">
-            <h3>$ELONIUX</h3>
-            <p>The first memecoin inspired by Elon Musk and his meme energy. Get on board and join us on the journey to Mars!</p>
-        </div>
-        <div class="token">
-            <img src="https://imgur.com/5e3MhWx.jpg" alt="$TRUMPONIUX Logo">
-            <h3>$TRUMPONIUX</h3>
-            <p>Bold, brash, and unapologetic – the memecoin for those who aren't afraid to make a statement.</p>
-        </div>
-    </section>
+<!-- Token 5 -->
+   <a class="token-card step-orange">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-content">
+        <h3>Coming Soon...</h3>
+        <p id="countdown2">Loading...</p>
+      </div>
+    </div>
+    <div class="card-back">
+          <p>Fast and fun surprises await! 🏎️</p>
+    </div>
+  </div>
+</a>
 
-    <section id="calculator" class="section calc-section">
-        <h2>Token Value Calculator</h2>
-        <input type="number" id="tokenAmount" placeholder="Enter token amount">
-        <button onclick="calculateValue()">Calculate Value</button>
-        <p id="valueResult"></p>
-    </section>
-    <script>
-        function calculateValue() {
-            const tokenAmount = document.getElementById('tokenAmount').value;
-            const tokenValue = 0.01; // Example rate per token
-            const result = tokenAmount * tokenValue;
-            document.getElementById('valueResult').innerText = `Current Value: $${result}`;
-        }
-    </script>
+<!-- Token 6 -->
+   <a class="token-card step-red">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-content">
+        <h3>Coming Soon...</h3>
+        <p id="countdown3">Loading...</p>
+      </div>
+    </div>
+    <div class="card-back">
+          <p>A beastly surprise is on its way! 🦁</p>
+    </div>
+  </div>
+</a>
 
-    <section id="community" class="section">
-        <h2>Join Our Community</h2>
-        <p>Be a part of the MEMEXIUM revolution! Follow us and get exclusive updates, join in community events, and be a driving force in the memecoin movement.</p>
-        <div class="social-links">
-            <a href="https://x.com/MEMEXIUM" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-            <a href="https://t.me/+F-CnSmRphbtmMmE8" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <div class="tiktok-embed-container">
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@memexium" data-unique-id="memexium" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > 
-                    <section> <a target="_blank" href="https://www.tiktok.com/@memexium?refer=creator_embed">@memexium</a> </section> 
-                </blockquote> 
-                <script async src="https://www.tiktok.com/embed.js"></script>
-            </div>
+<!-- Token 7 -->
+   <a class="token-card step-cyan">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-content">
+        <h3>Coming Soon...</h3>
+        <p id="countdown4">Loading...</p>
+      </div>
+    </div>
+    <div class="card-back">
+          <p>The grind never stops – stay tuned! 💼</p>
+    </div>
+  </div>
+</a>
+
+<!-- Token 8 -->
+   <a class="token-card step-cyan">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-content">
+        <h3>Coming Soon...</h3>
+        <p id="countdown5">Loading...</p>
+      </div>
+    </div>
+    <div class="card-back">
+          <p>New meme revolution ahead! 💪</p>
+    </div>
+  </div>
+</a>
+
+   
+  </div>
+    <!-- Final Token MEMEXIUM -->
+    <div class="final-token-container">
+      <a href="https://example.com/memexium" class="token-card final-token">
+        <div class="card-inner">
+          <div class="card-front" style="background-image: url('https://i.imgur.com/Irxxvcz.png');">
+            <!-- Przód pusty -->
+          </div>
+          <div class="card-back">
+            <h3>$MEMEXIUM</h3>
+            <p>The memecoin to rule them all! 🌕</p>
+            <p class="hashtag">#ToTheMoon</p>
+          </div>
         </div>
-    </section>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2023 MEMEXIUM - All Rights Reserved</p>
-        <p class="visitor-counter">Visitors: <span id="visitorCount"></span></p>
-    </footer>
-    <script>
-        document.getElementById('visitorCount').innerText = visitCount;
-    </script>
+
+
+
+
+<style>
+
+
+/* Ogólna Stylizacja Sekcji Tokenów */
+<section class="tokens" style="background: linear-gradient(135deg, #1a1a1a, #000); min-height: 100vh;">
+
+.tokens {
+  background: linear-gradient(135deg, #1a1a1a, #000);
+  padding: 4rem 2rem;
+  color: white;
+  text-align: center;
+}
+
+
+.section-title {
+  font-size: 2.5rem;
+  color: #00eaff;
+  text-shadow: 0 0 8px rgba(0, 238, 255, 0.7), 0 0 15px rgba(0, 238, 255, 0.5);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.section-subtitle {
+  font-size: 1.3rem;
+  color: #ddd;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
+
+.tokens-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Stylizacja Kart Tokenów */
+.token-card {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  text-decoration: none;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.token-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+
+.card-front {
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+}
+
+.card-back h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.card-back p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+  color: #ddd;
+}
+
+
+.step-blue .card-back {
+  background: rgba(0, 234, 255, 0.2); /* Niebieskie tło z przejrzystością */
+}
+.step-pink .card-back {
+  background: rgba(255, 0, 255, 0.2); /* Różowe tło z przejrzystością */
+}
+.step-green .card-back {
+  background: rgba(0, 255, 127, 0.2); /* Zielone tło z przejrzystością */
+}
+.step-purple .card-back {
+  background: rgba(138, 43, 226, 0.2); /* Fioletowe tło z przejrzystością */
+}
+.step-orange .card-back {
+  background: rgba(255, 99, 71, 0.2); /* Pomarańczowe tło z przejrzystością */
+}
+.step-red .card-back {
+  background: rgba(255, 77, 77, 0.2); /* Czerwone tło z przejrzystością */
+}
+.step-cyan .card-back {
+  background: rgba(0, 255, 255, 0.2); /* Turkusowe tło z przejrzystością */
+}
+.step-gold .card-back {
+  background: rgba(255, 215, 0, 0.2); /* Złote tło z przejrzystością */
+}
+
+
+/* Tła Zblurowane dla "Coming Soon" */
+.card-front[style*="blur(5px)"] {
+  filter: blur(5px) brightness(0.5);
+}
+
+/* Teksty i Stylizacja Napisów */
+.card-front h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.card-front p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.card-back p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+
+/* Sekcja dla MEMEXIUM */
+.final-token-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.final-token {
+  width: 300px; /* Większy rozmiar */
+  height: 300px;
+}
+
+.final-token .card-front {
+  background-size: cover;
+  background-position: center;
+}
+
+.final-token .card-front h3 {
+  font-size: 2.5rem; /* Większy tekst */
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.final-token .card-back {
+  background: linear-gradient(135deg, #2a2a2a, #ffd700);
+  font-size: 1.2rem; /* Większy tekst na tył */
+  padding: 1.5rem;
+  text-align: center;
+}
+
+
+/* Efekt Glow dla Nagłówka */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+  }
+  to {
+    text-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff;
+  }
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .tokens-container {
+    gap: 1.5rem;
+  }
+
+  .token-card {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tokens-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .token-card {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Obramowania Tokenów */
+.step-blue .card-front, .step-blue .card-back { border: 3px solid #00eaff; }
+.step-pink .card-front, .step-pink .card-back { border: 3px solid #ff00ff; }
+.step-green .card-front, .step-green .card-back { border: 3px solid #00ff7f; }
+.step-purple .card-front, .step-purple .card-back { border: 3px solid #8a2be2; }
+.step-orange .card-front, .step-orange .card-back { border: 3px solid #ff6347; }
+.step-red .card-front, .step-red .card-back { border: 3px solid #ff4d4d; }
+.step-cyan .card-front, .step-cyan .card-back { border: 3px solid #00ffff; }
+.step-gold .card-front, .step-gold .card-back { border: 3px solid #ffd700; }
+.final-token .card-front, .final-token .card-back {
+  border: none; /* Usunięcie złotej ramki */
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.5); /* Subtelne świecenie */
+}
+
+
+/* Tła Zblurowane dla "Coming Soon" */
+.card-front[style*="blur(5px)"] {
+  filter: blur(5px) brightness(0.5);
+}
+
+/* Teksty i Stylizacja Napisów */
+.card-front h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.card-front p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.card-back p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.final-token {
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  overflow: visible; /* Zapobiega przycinaniu ramki */
+  position: relative;
+  border-radius: 15px; /* Zaokrąglenie głównego kontenera */
+  text-decoration: none;
+}
+
+
+.final-token .card-inner {
+  position: relative;
+  width: calc(100% + 6px); /* Powiększa ramkę */
+  height: calc(100% + 6px);
+  top: -3px; /* Przesuwa ramkę w górę */
+  left: -3px; /* Przesuwa ramkę w lewo */
+  transform-style: preserve-3d; /* Zachowanie 3D */
+  transition: transform 0.6s ease; /* Gładki obrót */
+  border-radius: inherit; /* Dziedziczenie zaokrąglenia */
+}
+
+.final-token:hover .card-inner {
+  transform: rotateY(180deg); /* Obrót karty */
+}
+
+.final-token .card-front,
+.final-token .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px; /* Zaokrąglenie ramki */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.5); /* Subtelny cień */
+}
+
+
+.final-token .card-front {
+  background-image: url('https://i.imgur.com/Irxxvcz.png'); /* Obrazek */
+  background-size: cover;
+  background-position: center;
+}
+
+.final-token .card-back {
+  background: linear-gradient(135deg, #4a90e2, #9013fe); /* Gradient kolorów */
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Kolor tekstu */
+  border-radius: inherit; /* Zachowanie zaokrąglenia */
+}
+
+
+.final-token .card-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 2px rgba(0, 234, 255, 0.7), 0 0 20px 5px rgba(0, 209, 255, 0.5); /* Efekt świecącej ramki */
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+
+
+.card-inner {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+}
+
+.final-token {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+
+
+
+@keyframes glowingBorder {
+  from {
+    box-shadow: 0 0 10px rgba(0, 238, 255, 0.6);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.9);
+  }
+}
+
+
+
+@keyframes glowingBorder {
+  from {
+    box-shadow: 0 0 10px rgba(0, 238, 255, 0.6);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.9);
+  }
+}
+
+
+/* Efekt Glow dla Nagłówka */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+  }
+  to {
+    text-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff;
+  }
+}
+.section-subtitle {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: #fff;
+  animation: zoomIn 1.5s ease-out forwards;
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.highlight-text {
+  font-weight: bold;
+  color: #b388ff;
+  text-shadow: 0 0 10px rgba(179, 136, 255, 0.7);
+}
+
+
+
+<style>
+/* Poprawiony kod CSS */
+.token-card {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  text-decoration: none;
+  position: relative;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.token-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.3);
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.card-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-content p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.card-back {
+  background: #222;
+  transform: rotateY(180deg);
+}
+
+.card-front {
+  transform:
+
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .tokens-container {
+    gap: 1.5rem;
+  }
+
+  .token-card {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tokens-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .token-card {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .final-token {
+    width: 250px;
+    height: 250px;
+  }
+
+  .final-token .card-front h3 {
+    font-size: 2rem;
+  }
+
+  .final-token .card-back {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .final-token {
+    width: 200px;
+    height: 200px;
+  }
+
+  .final-token .card-front h3 {
+    font-size: 1.8rem;
+  }
+
+  .final-token .card-back {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+</style>
+
+
+<script>
+function startCountdown(id, targetDate) {
+  const countDownDate = new Date(targetDate).getTime();
+
+  // Funkcja liczenia czasu
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById(id).innerHTML = "Token Released!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById(id).innerHTML = `${days}d ${hours}h ${minutes}m`;
+  }
+
+  // Wywołaj funkcję natychmiast
+  updateCountdown();
+
+  // Aktualizuj co 1 minutę
+  const x = setInterval(updateCountdown, 60000);
+}
+
+startCountdown("countdown1", "2024-12-31T00:00:00");
+startCountdown("countdown2", "2025-01-15T00:00:00");
+startCountdown("countdown3", "2025-02-01T00:00:00");
+startCountdown("countdown4", "2025-03-10T00:00:00");
+startCountdown("countdown5", "2025-04-01T00:00:00");
+
+</script>
+
+<!-- Sekcja About Us -->
+<section class="about-us" id="about-us">
+  <div class="background"></div>
+  <!-- Nagłówek Sekcji -->
+  <h2 class="about-title">💎 About MEMEXIUM – From Memes to the Moon 🚀</h2>
+  <p class="about-subtitle">
+    A revolutionary journey of <span class="highlight-text">memecoins</span>, <strong>community</strong>, and the ultimate token launch! 
+  </p>
+
+  <!-- Blok 1: Our Vision -->
+  <div class="about-block">
+    <h3>🎯 Our Vision</h3>
+    <p>
+      <span class="highlight-text">MEMEXIUM</span>  is not just a token – it's a <strong>revolution</strong> 🔥. We believe in the power of <span class="highlight-text">memes</span> to unite people and build communities 🌐.
+      From small memecoins 🪙 to one ultimate token 💎, we are creating a journey that rewards both <span class="highlight-text">fun</span> 🎉 and early belief 🕒.
+    </p>
+    <p class="slogan">✨ Great memes, great communities, greater rewards. ✨</p>
+  </div>
+
+  <!-- Blok 2: How We Build -->
+  <div class="about-block">
+    <h3>🚀 How We Build</h3>
+    <p>
+      We release a series of <span class="highlight-text">memecoins</span> 🪙 inspired by famous figures 👑, each with its own story 📖 and viral energy.
+      These tokens serve as building blocks, gathering a massive and loyal <strong>community</strong> 💬 ready for the ultimate launch 🚀.
+    </p>
+    <div class="steps">
+      <div class="step-item">
+        <span class="step-icon">🔥</span>
+        <p>Launch viral memecoins with recognizable faces and stories 😎.</p>
+      </div>
+      <div class="step-item">
+        <span class="step-icon">📣</span>
+        <p>Promote through memes and social media to grow rapidly 📈.</p>
+      </div>
+      <div class="step-item">
+        <span class="step-icon">🤝</span>
+        <p>Build a community of believers and investors 🤩.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blok 3: The Ultimate Goal -->
+  <div class="about-block">
+    <h3>💎 MEMEXIUM – The Token to Rule Them All 👑</h3>
+    <p>
+      After building a thriving community with multiple memecoin launches, we unveil 
+      <span class="highlight-text pulsating">$MEMEXIUM</span> 💎 – the final token that unites all the hype 🎇, energy ⚡, and investors 💰. 
+      Early believers will reap the biggest rewards 🏆. The earlier you join 🕒, the closer you get to the moon! 🌕🚀
+    </p>
+  </div>
+
+  <!-- Blok 4: Join the Community -->
+  <div class="about-block stats-block">
+    <h3>🌐 A Thriving Community</h3>
+    <p>
+      Our strength lies in our <span class="highlight-text">community</span> 🤝. MEMEXIUM is built by the people 👥, for the people ✊.
+      Engage with us through memes, discussions 💬, and viral campaigns 📣. Together, we are unstoppable 💪.
+    </p>
+    <div class="stats">
+      <div class="stat-item">
+        <h4>10,000+</h4>
+        <p>Community Members 🚀</p>
+      </div>
+      <div class="stat-item">
+        <h4>8</h4>
+        <p>Memecoins Launched 🔥</p>
+      </div>
+      <div class="stat-item">
+        <h4>1M+</h4>
+        <p>Social Media Reach 📈</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+
+
+
+/* Ogólna stylizacja sekcji About Us */
+.about-us {
+  position: relative; /* Pozycjonowanie dla dynamicznego tła */
+  background: none; /* Usunięcie wcześniejszego tła */
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Usuwa ewentualne wyciekanie efektów */
+}
+
+
+/* Nagłówek sekcji */
+.about-title {
+  font-size: 2.8rem;
+  color: #00eaff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7), 0 0 20px rgba(0, 238, 255, 0.5);
+  margin-bottom: 1rem;
+  animation: glowText 1.5s ease-in-out infinite alternate;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  color: #b388ff;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  text-shadow: 0 0 8px rgba(179, 136, 255, 0.5);
+}
+
+/* Animacja dla glow */
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 10px rgba(0, 238, 255, 0.5), 0 0 20px rgba(0, 238, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(0, 238, 255, 0.8), 0 0 30px rgba(0, 238, 255, 0.6);
+  }
+}
+
+/* Dopasowanie wyglądu bloków do Community */
+.about-block {
+  background: rgba(0, 238, 255, 0.1); /* Przejrzyste niebieskawe tło */
+  border: 2px solid #00eaff; /* Spójna ramka */
+  border-radius: 15px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center; /* Wyśrodkowanie całego bloku */
+}
+
+.about-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 238, 255, 0.5);
+}
+
+/* Nagłówki bloków */
+.about-block h3 {
+  font-size: 2rem;
+  color: #ff4081;
+  text-shadow: 0 0 8px rgba(255, 64, 129, 0.7), 0 0 15px rgba(255, 64, 129, 0.5);
+  margin-bottom: 1rem;
+  text-align: center; /* Wyśrodkowanie nagłówków */
+}
+
+/* Treść bloków */
+.about-block p, .about-block ul {
+  font-size: 1.2rem;
+  color: #ddd; /* Jasnoszary tekst */
+  line-height: 1.8;
+  text-align: center; /* Wyśrodkowanie treści */
+}
+
+/* Listy z ikonami */
+.about-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-block li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  text-align: center; /* Wyśrodkowanie treści list */
+}
+
+
+
+
+
+
+/* Stylizacja bloku statystyk */
+.stats-block {
+  background: rgba(0, 238, 255, 0.1);
+  padding: 2.5rem;
+  border: 2px solid #00eaff;
+  border-radius: 15px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.stat-item:hover {
+  transform: scale(1.1);
+}
+
+.stat-item h4 {
+  font-size: 2.5rem;
+  color: #00eaff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .about-block {
+    padding: 1.5rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .about-block {
+    padding: 1rem;
+  }
+
+  .stat-item h4 {
+    font-size: 2rem;
+  }
+
+  .stat-item p {
+    font-size: 1rem;
+  }
+}
+
+
+
+</style>
+
+
+
+
+<!-- Sekcja Roadmap -->
+<section class="roadmap" id="roadmap">
+  <h2>🚀 Project Roadmap</h2>
+  <p class="roadmap-subtitle">Our memetic journey in 5 epic steps!</p>
+
+  <div class="roadmap-timeline">
+    <!-- Step 1 -->
+    <div class="roadmap-step step-blue">
+      <div class="roadmap-icon">🚀</div>
+      <div class="roadmap-content">
+        <h3>Step 1</h3>
+        <p>Launch of the <strong>MEMEXIUM platform</strong> with the first legendary tokens: $SANTONIUX, $ELONIUX, and $TRUMPONIUX.</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="roadmap-step step-pink">
+      <div class="roadmap-icon">💥</div>
+      <div class="roadmap-content">
+        <h3>Step 2</h3>
+        <p>Community growth takes off: viral <strong>memes</strong>, Twitter campaigns, and unstoppable social media buzz. 🌐</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="roadmap-step step-yellow">
+      <div class="roadmap-icon">🪙</div>
+      <div class="roadmap-content">
+        <h3>Step 3</h3>
+        <p>Rollout of <strong>new memecoins</strong>: unique tokens inspired by iconic figures to fuel community growth and hype. 🚀</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="roadmap-step step-green">
+      <div class="roadmap-icon">🌕</div>
+      <div class="roadmap-content">
+        <h3>Step 4</h3>
+        <p>Massive community expansion as we <strong>promote</strong> and grow these tokens through viral strategies and collaboration. 🤝</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="roadmap-step step-orange">
+      <div class="roadmap-icon">🏆</div>
+      <div class="roadmap-content">
+        <h3>Step 5</h3>
+        <p>The <strong>grand launch</strong> of $MEMEXIUM – uniting our community and memetic energy into one ultimate token. 🌟</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Stylizacja Roadmap -->
+<style>
+/* Sekcja Roadmap */
+.roadmap {
+  background: linear-gradient(135deg, #1e1e2e, #111122);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.roadmap h2 {
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  margin-bottom: 1rem;
+}
+
+.roadmap-subtitle {
+  font-size: 1.5rem;
+  color: #00eaff;
+  margin-bottom: 3rem;
+}
+
+/* Oś Czasu */
+.roadmap-timeline {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.roadmap-step {
+  background: #2e2e3e;
+  border-radius: 15px;
+  padding: 1.5rem;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  border: 3px solid transparent;
+}
+
+.roadmap-step:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+/* Kolory dla Kroków */
+.step-blue { border-color: #00eaff; }
+.step-pink { border-color: #ff00ff; }
+.step-yellow { border-color: #ffd700; }
+.step-green { border-color: #00ff7f; }
+.step-orange { border-color: #ff8c00; }
+
+.roadmap-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+.roadmap-content h3 {
+  font-size: 1.5rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-content p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+/* Animacja Ikon */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+</style>
+
+
+<!-- Sekcja Społeczności -->
+<section class="community" id="community">
+  <h2>Join Our Community 👥</h2>
+  <p>Connect with us on all platforms and become part of the <span class="highlight">MEMEXIUM</span> movement!</p>
+  <div class="community-container">
+    <!-- Telegram VIP -->
+    <a href="https://t.me/+QzI3gzzJlwAxZTY8" class="community-card" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram VIP">
+      <h3>Telegram VIP</h3>
+      <p>Exclusive access for top supporters 🚀</p>
+    </a>
+    <!-- Telegram General -->
+    <a href="https://t.me/+qZA5dK1ATCMwMzM0" class="community-card" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram General">
+      <h3>Telegram General</h3>
+      <p>Join our main group and stay updated! 💬</p>
+    </a>
+    <!-- X (dawniej Twitter) -->
+    <a href="https://x.com/YourHandle" class="community-card" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="X">
+      <h3>X</h3>
+      <p>Follow us for news, memes, and updates ✖️</p>
+    </a>
+    <!-- TikTok -->
+    <a href="https://tiktok.com/@YourHandle" class="community-card" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046124.png" alt="TikTok">
+      <h3>TikTok</h3>
+      <p>Watch viral memes and hype videos 🎥</p>
+    </a>
+<!-- Instagram -->
+<a href="https://instagram.com/YourHandle" class="community-card" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+  <h3>Instagram</h3>
+  <p>Meme updates, success highlights, and behind-the-scenes moments 📸🔥</p>
+</a>
+
+<!-- YouTube -->
+<a href="https://youtube.com/YourChannel" class="community-card" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+  <h3>YouTube</h3>
+  <p>Epic meme clips and project updates you can’t miss 🎥💎</p>
+</a>
+
+  </div>
+</section>
+
+<!-- Styl sekcji Community -->
+<style>
+  /* Tło Sekcji Community */
+  .community {
+  position: relative; /* Pozycjonowanie dla dynamicznego tła */
+  background: none; /* Usunięcie wcześniejszego tła */
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Usuwa ewentualne wyciekanie efektów */
+}
+
+  .community h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #00eaff;
+    text-shadow: 0px 0px 10px rgba(0, 238, 255, 0.7);
+  }
+
+  .community p {
+    font-size: 1.2rem;
+    color: #d3d3d3;
+    margin-bottom: 2rem;
+  }
+
+  /* Podświetlony tekst */
+  .highlight {
+    color: #ff00ff;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.7);
+  }
+
+  /* Kontener kart */
+  .community-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* Karty Community */
+  .community-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 238, 255, 0.4);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 238, 255, 0.1);
+  }
+
+  .community-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 5px #00eaff);
+  }
+
+  .community-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #00eaff;
+    text-shadow: 0px 0px 8px rgba(0, 238, 255, 0.5);
+  }
+
+  .community-card p {
+    font-size: 1rem;
+    color: #bbb;
+  }
+
+  /* Efekt hover */
+  .community-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 238, 255, 0.3);
+    background: rgba(20, 20, 20, 0.8);
+  }
+    /* Responsywność */
+  @media (max-width: 1024px) {
+    .community-card {
+      width: 180px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .community-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .community-card {
+      width: 80%;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .community-card {
+      width: 90%;
+    }
+    .community h2 {
+      font-size: 2.5rem;
+    }
+    .community p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+
+
+<!-- Sekcja FAQ -->
+<section id="faq" class="faq">
+  <div class="faq-header">
+    <h2>❓ <span class="faq-title">FAQ</span></h2>
+    <p class="faq-slogan">All your <strong>MEMEXIUM</strong> questions, answered in style 🚀✨</p>
+  </div>
+  <div class="faq-container">
+    <!-- Question 1 -->
+    <div class="faq-item">
+      <h3>🚀 What is MEMEXIUM?</h3>
+      <p>MEMEXIUM is the ultimate memecoin project, combining <strong>fun</strong> 🎉, <strong>community spirit</strong> 🤝, and viral potential. We build step-by-step, launching smaller memecoins to gather a massive audience for our final revolution – the <span class="highlight">MEMEXIUM</span> token.</p>
+    </div>
+    <!-- Question 2 -->
+    <div class="faq-item">
+      <h3>💎 How does MEMEXIUM work?</h3>
+      <p>We launch <span class="highlight">viral tokens</span> 🌟 inspired by famous figures and promote them with <strong>memes</strong> 🎭 across social media. This builds a strong, early-believer <span class="highlight">community</span> 🚀 ready to take MEMEXIUM to the moon!</p>
+    </div>
+    <!-- Question 3 -->
+    <div class="faq-item">
+      <h3>🌕 What makes MEMEXIUM unique?</h3>
+      <p>Unlike other memecoins, <span class="highlight">MEMEXIUM</span> follows a clear roadmap 🗺️: <strong>multiple viral launches</strong> leading to a unified and powerful final token. The earlier you join, the <strong>bigger your rewards!</strong> 💰</p>
+    </div>
+    <!-- Question 4 -->
+    <div class="faq-item">
+      <h3>🔥 When will the final MEMEXIUM token launch?</h3>
+      <p>Once our <span class="highlight">community</span> 💪 reaches critical mass through the success of smaller tokens, we will launch <span class="highlight">$MEMEXIUM</span> 🚀 – the ultimate memecoin revolution. Stay tuned! 🔔</p>
+    </div>
+    <!-- Question 5 -->
+    <div class="faq-item">
+      <h3>🌐 How can I join the community?</h3>
+      <p>Join us on social media 📱 for the latest updates, memes, and campaigns. We’re active on <strong>Telegram</strong> 💬, <strong>X</strong> 🐦, <strong>Instagram</strong> 📸, and <strong>YouTube</strong> ▶️. Be part of the revolution! ✊</p>
+    </div>
+  </div>
+  <!-- CTA Button -->
+  <div class="faq-cta">
+    <a href="#community" class="cta-button1">Join the Revolution 🚀</a>
+  </div>
+</section>
+
+
+
+
+
+<!-- Styl sekcji FAQ -->
+<style>
+  /* Ogólna stylizacja sekcji FAQ */
+.faq {
+  position: relative; /* Pozycjonowanie dla dynamicznego tła */
+  background: none; /* Usunięcie wcześniejszego tła */
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Usuwa ewentualne wyciekanie efektów */
+}
+
+/* Nagłówek i slogan */
+.faq-header h2 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #00eaff;
+  text-shadow: 0px 0px 10px rgba(0, 238, 255, 0.8);
+  animation: pulse 2s infinite alternate;
+}
+
+.faq-slogan {
+  font-size: 1.3rem;
+  color: #d3d3d3;
+  margin-bottom: 3rem;
+}
+
+/* Pojedyncze bloki FAQ */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(0, 238, 255, 0.5);
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: 0px 8px 20px rgba(0, 238, 255, 0.1);
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 30px rgba(0, 238, 255, 0.4);
+}
+
+.faq-item h3 {
+  font-size: 1.5rem;
+  color: #00eaff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0px 0px 5px rgba(0, 238, 255, 0.7);
+}
+
+.faq-item p {
+  font-size: 1rem;
+  color: #d3d3d3;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #00eaff;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+}
+
+/* CTA Button */
+.faq-cta {
+  margin-top: 2rem;
+}
+
+.cta-button1 {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background: linear-gradient(135deg, #00eaff, #007acc);
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0px 4px 10px rgba(0, 238, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cta-button1:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 20px rgba(0, 238, 255, 0.6);
+}
+
+/* Animacja pulsowania nagłówka */
+@keyframes pulse {
+  from {
+    text-shadow: 0px 0px 10px rgba(0, 238, 255, 0.8);
+  }
+  to {
+    text-shadow: 0px 0px 20px rgba(0, 238, 255, 1);
+  }
+}
+/* Stylizacja dla emotek */
+.faq-item p strong, 
+.faq-item p .highlight {
+  font-weight: bold;
+  color: #00eaff;
+}
+
+.faq-item p span {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .faq-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .faq-slogan {
+    font-size: 1.1rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.3rem;
+  }
+
+  .faq-item p {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+</style>
+
+
+<!-- Sekcja Contact -->
+<section id="contact" class="contact">
+  <h2>📩 Get in Touch</h2>
+  <p>Have questions or suggestions? Contact us!</p>
+  <div class="contact-container">
+    <!-- Formularz Kontaktowy z Formspree -->
+    <form class="contact-form" action="https://formspree.io/f/{your-form-id}" method="POST">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+      </div>
+      <button type="submit" class="contact-btn">🚀Send</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- Styl sekcji Contact -->
+<style>
+/* Styl dla sekcji kontaktowej */
+/* Sekcja Contact */
+.contact {
+  position: relative; /* Pozycjonowanie dla dynamicznego tła */
+  background: none; /* Usunięcie wcześniejszego tła */
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Usuwa ewentualne wyciekanie efektów */
+}
+
+.contact h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00eaff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+}
+
+.contact p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #d3d3d3;
+}
+
+/* Kontener formularza */
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Formularz */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group label {
+  color: #00eaff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #00eaff;
+  border-radius: 10px;
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+/* Przycisk */
+.contact-btn {
+  background: linear-gradient(90deg, #00eaff, #00bfff);
+  color: #000;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.contact-btn:hover {
+  background: linear-gradient(90deg, #ffd700, #ffb700);
+  box-shadow: 0px 0px 15px #ffd700;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .contact {
+    padding: 3rem 1rem;
+  }
+
+  .contact h2 {
+    font-size: 2.5rem;
+  }
+
+  .contact p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact h2 {
+    font-size: 2rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.6rem;
+  }
+
+  .contact-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+</style>
+
 </body>
 </html>
+
+
