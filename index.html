@@ -1180,6 +1180,14 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
 }
 
 
+@keyframes autoRotate {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+.rotate-card {
+  animation: autoRotate 1s forwards ease-in-out;
+}
 
 
 </style>
@@ -1221,6 +1229,27 @@ startCountdown("countdown4", "2025-03-10T00:00:00");
 startCountdown("countdown5", "2025-04-01T00:00:00");
 
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll('.token-card .card-inner');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('rotate-card');
+        } else {
+          entry.target.classList.remove('rotate-card');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (window.innerWidth <= 768) { // Tylko na mobilnych
+      cards.forEach(card => observer.observe(card));
+    }
+  });
+</script>
+
 
 <!-- Sekcja About Us -->
 <section class="about-us" id="about-us">
