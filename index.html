@@ -1180,14 +1180,17 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
 }
 
 
+/* Klasa do automatycznego obracania kart */
 @keyframes autoRotate {
   0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(90deg); }
   100% { transform: rotateY(180deg); }
 }
 
-.rotate-card {
-  animation: autoRotate 1s forwards ease-in-out;
+.auto-rotate {
+  animation: autoRotate 1s ease-in-out forwards;
 }
+
 
 
 </style>
@@ -1231,24 +1234,28 @@ startCountdown("countdown5", "2025-04-01T00:00:00");
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll('.token-card .card-inner');
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll('.card-inner');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('rotate-card');
+          entry.target.classList.add("auto-rotate");
         } else {
-          entry.target.classList.remove('rotate-card');
+          entry.target.classList.remove("auto-rotate");
         }
       });
-    }, { threshold: 0.5 });
+    },
+    { threshold: 0.5 } // Element musi być w 50% widoczny
+  );
 
-    if (window.innerWidth <= 768) { // Tylko na mobilnych
-      cards.forEach(card => observer.observe(card));
-    }
-  });
+  if (window.innerWidth <= 768) { // Tylko na urządzeniach mobilnych
+    cards.forEach((card) => observer.observe(card));
+  }
+});
 </script>
+
 
 
 <!-- Sekcja About Us -->
