@@ -64,44 +64,7 @@
     nav a:hover {
       color: #ffd700;
     }
-    /* Nawigacja: Dostosowanie dla mniejszych ekranów */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 0.5rem 1rem; /* Zmniejszenie paddingu */
-  }
 
-  .navbar a {
-    font-size: 1rem; /* Zmniejszenie rozmiaru czcionki */
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Nawigacja w kolumnie */
-    text-align: center; /* Wyśrodkowanie elementów */
-    gap: 0.5rem; /* Odstępy między przyciskami */
-  }
-
-  .navbar a {
-    font-size: 1rem;
-    padding: 0.5rem 0.8rem; /* Mniejsze przyciski */
-    border-radius: 10px; /* Zaokrąglenie */
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar {
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .navbar a {
-    font-size: 0.9rem; /* Dalsze zmniejszenie tekstu */
-    padding: 0.4rem 0.6rem;
-    width: 90%; /* Przycisk zajmuje większą szerokość */
-    margin: 0 auto; /* Wyśrodkowanie */
-  }
-}
 
 
     /* Sekcje */
@@ -142,10 +105,50 @@
     <a href="#hero">Home</a>
     <a href="#tokens">Tokens</a>
     <a href="#about">About</a>
+    <a href="#anti-rug">Anti-Rug</a>
     <a href="#roadmap">Roadmap</a>
     <a href="#community">Community</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
+    <style>    /* Nawigacja: Dostosowanie dla mniejszych ekranów */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0.5rem 1rem; /* Zmniejszenie paddingu */
+  }
+
+  .navbar a {
+    font-size: 1rem; /* Zmniejszenie rozmiaru czcionki */
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Nawigacja w kolumnie */
+    text-align: center; /* Wyśrodkowanie elementów */
+    gap: 0.5rem; /* Odstępy między przyciskami */
+  }
+
+  .navbar a {
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem; /* Mniejsze przyciski */
+    border-radius: 10px; /* Zaokrąglenie */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .navbar a {
+    font-size: 0.9rem; /* Dalsze zmniejszenie tekstu */
+    padding: 0.4rem 0.6rem;
+    width: 90%; /* Przycisk zajmuje większą szerokość */
+    margin: 0 auto; /* Wyśrodkowanie */
+  }
+}
+</style>
   </nav>
   
 <!-- Sekcja Główna (Hero) -->
@@ -436,6 +439,10 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
     width: 100%;
   }
 }
+/* Sekcja nadrzędna (poprzednia sekcja) */
+.previous-section {
+  margin-bottom: 3rem; /* Dodaje odstęp na dole */
+}
 </style>
 
 <section class="tokens" id="tokens">
@@ -595,6 +602,14 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
 
 
 <style>
+/* Sekcja z Explore Our Tokens */
+#tokens {
+  margin-top: 4rem; /* Dodaje odstęp na górze */
+  padding-top: 2rem; /* Dodatkowy padding dla sekcji */
+}
+#tokens {
+  min-height: 100vh; /* Sekcja zajmie przynajmniej pełną wysokość ekranu */
+}
 
 
 /* Ogólna Stylizacja Sekcji Tokenów */
@@ -1101,10 +1116,21 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
 
 /* Responsywność */
 @media (max-width: 768px) {
+  #tokens {
+    margin-top: 2rem; /* Zmniejsza odstęp na mniejszych ekranach */
+    padding-top: 1rem;
+  }
+
+  .previous-section {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
   .tokens-container {
     gap: 1.5rem;
   }
-
+  
   .token-card {
     width: 180px;
     height: 180px;
@@ -1452,7 +1478,230 @@ startCountdown("countdown5", "2025-04-01T00:00:00");
 
 </style>
 
+<!-- Sekcja Anti-Rug Policy -->
+<section id="anti-rug" class="anti-rug-section">
+  <div class="container">
+    <!-- Nagłówek Sekcji -->
+    <h2 class="anti-rug-title">🛡️ Our <span class="highlight">Anti-Rug Commitment</span></h2>
+    <p class="anti-rug-slogan">Great projects. Full transparency. Zero surprises.</p>
 
+    <!-- Blok: Why MEMEXIUM is Safe? -->
+    <div class="anti-rug-block">
+      <h3 class="block-title">🔒 Why MEMEXIUM is Safe?</h3>
+      <ul class="anti-rug-list">
+        <li>🔒 <strong>Locked Liquidity Pools</strong> – Ensuring stability and safety for all investors.</li>
+        <li>🛠️ <strong>No Hidden Mechanics</strong> – Fully transparent tokenomics with zero surprises.</li>
+        <li>👨‍👩‍👧‍👦 <strong>Community at the Center</strong> – Driven by people, powered by trust.</li>
+        <li>🚀 <strong>Step-by-Step Growth</strong> – Viral launches leading to the ultimate MEMEXIUM token.</li>
+      </ul>
+    </div>
+
+    <!-- Blok: How We Prevent Rugs? -->
+    <div class="anti-rug-block">
+      <h3 class="block-title">🛠️ How We Prevent Rugs?</h3>
+      <div class="anti-rug-cards">
+        <div class="card">
+          <span class="card-icon">🔐</span>
+          <p><strong>Safe Liquidity</strong></p>
+        </div>
+        <div class="card">
+          <span class="card-icon">👀</span>
+          <p><strong>Full Transparency</strong></p>
+        </div>
+        <div class="card">
+          <span class="card-icon">💬</span>
+          <p><strong>Open Communication</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div class="cta-block">
+      <p class="cta-text">MEMEXIUM thrives because of <strong>YOU</strong>. Join our growing community and be part of the revolution!</p>
+      <a href="#community" class="cta-button2">Be Part of MEMEXIUM 🚀</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Ogólne tło sekcji */
+.anti-rug-section {
+  position: relative; /* Pozycjonowanie dla dynamicznego tła */
+  background: none; /* Usunięcie wcześniejszego tła */
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Usuwa ewentualne wyciekanie efektów */
+}
+
+/* Nagłówek główny */
+.anti-rug-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00eaff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+}
+
+.anti-rug-title .highlight {
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.anti-rug-slogan {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #ddd;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+/* Blok sekcji */
+.anti-rug-block {
+  margin-bottom: 3rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border: 1px solid #00eaff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.2);
+}
+
+.block-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+
+.anti-rug-list {
+  list-style: none;
+  padding: 0;
+}
+
+.anti-rug-list li {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.anti-rug-list strong {
+  color: #00eaff;
+}
+
+/* Karty pod How We Prevent Rugs */
+/* Ramki w sekcji Anti-Rug Policy */
+.anti-rug-cards {
+  display: flex;
+  justify-content: space-around; /* Rozkład ramek */
+  gap: 1.5rem; /* Większy odstęp między ramkami */
+  flex-wrap: wrap; /* Ramki przechodzą do nowej linii na mniejszych ekranach */
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00eaff;
+  border-radius: 10px;
+  padding: 1.5rem; /* Wewnętrzne marginesy, więcej miejsca na tekst */
+  text-align: center;
+  width: 200px; /* Szerokość ramki */
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  word-wrap: break-word; /* Przełamanie długiego tekstu */
+}
+
+.card p {
+  font-size: 1.1rem; /* Dopasowanie rozmiaru czcionki */
+  line-height: 1.4; /* Poprawienie odstępu między liniami */
+  color: #fff;
+  margin: 0.5rem 0 0 0; /* Odsunięcie tekstu od ikony */
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #00eaff;
+}
+
+/* Responsywność ramek */
+@media (max-width: 768px) {
+  .card {
+    width: 150px; /* Zmniejszenie szerokości ramek na mniejszych ekranach */
+    padding: 1rem; /* Dopasowanie paddingu */
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Ramki na całą szerokość ekranu */
+  }
+}
+
+/* CTA (Call-to-Action) */
+.cta-block {
+  margin-top: 3rem;
+}
+
+.cta-text {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button2 {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: #00eaff;
+  color: #000;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.cta-button2:hover {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .block-title {
+    font-size: 1.8rem;
+  }
+  .anti-rug-list li {
+    font-size: 1rem;
+  }
+  .card {
+    width: 120px;
+  }
+  .cta-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .anti-rug-title {
+    font-size: 2rem;
+  }
+  .anti-rug-slogan {
+    font-size: 1.2rem;
+  }
+  .block-title {
+    font-size: 1.5rem;
+  }
+  .cta-button2 {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+</style>
 
 
 <!-- Sekcja Roadmap -->
