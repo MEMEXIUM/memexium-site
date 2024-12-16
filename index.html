@@ -455,11 +455,12 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
     <!-- Token 1 -->
     <a href="https://example.com/santoniux" class="token-card step-blue">
       <div class="card-inner">
-        <div class="card-front" style="background-image: url('https://i.imgur.com/LM3PlaD.png');">
-          <!-- Usunięto tekst z przodu -->
+        <div class="card-front" style="background-image: url('https://imgur.com/K7b3cgV.png');">
         </div>
         <div class="card-back">
           <h3>$SANTONIUX</h3>
+          <p id="countdown1">Loading...</p>
+
           <p>Ho-ho-ho! Santa's got crypto for you! 🎅</p>
           <p>#SantaCrypto</p>
 
@@ -470,11 +471,13 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
     <!-- Token 2 -->
     <a href="https://example.com/eloniux" class="token-card step-pink">
       <div class="card-inner">
-        <div class="card-front" style="background-image: url('https://i.imgur.com/LM3PlaD.png');">
+        <div class="card-front" style="background-image: url('https://imgur.com/jRUx6kL.png');">
           <!-- Usunięto tekst z przodu -->
         </div>
         <div class="card-back">
           <h3>$ELONIUX</h3>
+                    <p id="countdown2">Loading...</p>
+
           <p>To the moon... but first, memes! 🚀</p>
           <p>#ToTheMars</p>
 
@@ -485,11 +488,13 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
     <!-- Token 3 -->
     <a href="https://example.com/trumponiux" class="token-card step-green">
       <div class="card-inner">
-        <div class="card-front" style="background-image: url('https://i.imgur.com/LM3PlaD.png');">
+        <div class="card-front" style="background-image: url('https://imgur.com/UAQlabN.png');">
           <!-- Usunięto tekst z przodu -->
         </div>
         <div class="card-back">
           <h3>$TRUMPONIUX</h3>
+                    <p id="countdown3">Loading...</p>
+
           <p>Make memecoins great again! 🎩</p>
           <p>#HODLTheWall</p>
 
@@ -501,10 +506,10 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
    <a class="token-card step-purple">
   <div class="card-inner">
     <div class="card-front">
-      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-background" style="background-image: url('https://imgur.com/GwuxpR9.png');"></div>
       <div class="card-content">
         <h3>Coming Soon...</h3>
-        <p id="countdown1">Loading...</p>
+        <p id="countdown4">Loading...</p>
       </div>
     </div>
     <div class="card-back">
@@ -517,10 +522,10 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
    <a class="token-card step-orange">
   <div class="card-inner">
     <div class="card-front">
-      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-background" style="background-image: url('https://imgur.com/4nDDXE5.png');"></div>
       <div class="card-content">
         <h3>Coming Soon...</h3>
-        <p id="countdown2">Loading...</p>
+        <p id="countdown5">Loading...</p>
       </div>
     </div>
     <div class="card-back">
@@ -533,10 +538,10 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
    <a class="token-card step-red">
   <div class="card-inner">
     <div class="card-front">
-      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-background" style="background-image: url('https://imgur.com/mSXSCxC.png');"></div>
       <div class="card-content">
         <h3>Coming Soon...</h3>
-        <p id="countdown3">Loading...</p>
+        <p id="countdown6">Loading...</p>
       </div>
     </div>
     <div class="card-back">
@@ -549,10 +554,10 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
    <a class="token-card step-cyan">
   <div class="card-inner">
     <div class="card-front">
-      <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
+      <div class="card-background" style="background-image: url('https://imgur.com/xVxKJ42.png');"></div>
       <div class="card-content">
         <h3>Coming Soon...</h3>
-        <p id="countdown4">Loading...</p>
+        <p id="countdown7">Loading...</p>
       </div>
     </div>
     <div class="card-back">
@@ -568,7 +573,7 @@ ansform: translateY(-3px); /* Delikatne podniesienie */
       <div class="card-background" style="background-image: url('https://i.imgur.com/LM3PlaD.png');"></div>
       <div class="card-content">
         <h3>Coming Soon...</h3>
-        <p id="countdown5">Loading...</p>
+        <p id="countdown8">Loading...</p>
       </div>
     </div>
     <div class="card-back">
@@ -1225,11 +1230,15 @@ function startCountdown(id, targetDate) {
   const x = setInterval(updateCountdown, 60000);
 }
 
-startCountdown("countdown1", "2024-12-31T00:00:00");
-startCountdown("countdown2", "2025-01-15T00:00:00");
-startCountdown("countdown3", "2025-02-01T00:00:00");
-startCountdown("countdown4", "2025-03-10T00:00:00");
-startCountdown("countdown5", "2025-04-01T00:00:00");
+startCountdown("countdown1", "2024-12-21T00:00:00");
+startCountdown("countdown2", "2025-01-06T00:00:00");
+startCountdown("countdown3", "2025-01-20T00:00:00");
+startCountdown("countdown4", "2025-02-04T00:00:00");
+startCountdown("countdown5", "2025-02-15T00:00:00");
+startCountdown("countdown6", "2024-02-25T00:00:00");
+startCountdown("countdown7", "2024-03-07T00:00:00");
+startCountdown("countdown8", "2024-03-15T00:00:00");
+
 
 </script>
 
@@ -1319,15 +1328,15 @@ document.addEventListener("DOMContentLoaded", function () {
     </p>
     <div class="stats">
       <div class="stat-item">
-        <h4>10,000+</h4>
+        <h4>1+</h4>
         <p>Community Members 🚀</p>
       </div>
       <div class="stat-item">
-        <h4>8</h4>
+        <h4>0</h4>
         <p>Memecoins Launched 🔥</p>
       </div>
       <div class="stat-item">
-        <h4>1M+</h4>
+        <h4>1+</h4>
         <p>Social Media Reach 📈</p>
       </div>
     </div>
@@ -1898,26 +1907,26 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>Join our main group and stay updated! 💬</p>
     </a>
     <!-- X (dawniej Twitter) -->
-    <a href="https://x.com/YourHandle" class="community-card" target="_blank">
+    <a href="https://x.com/MEMEXIUM" class="community-card" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="X">
       <h3>X</h3>
       <p>Follow us for news, memes, and updates ✖️</p>
     </a>
     <!-- TikTok -->
-    <a href="https://tiktok.com/@YourHandle" class="community-card" target="_blank">
+    <a href="https://www.tiktok.com/@memexium" class="community-card" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/3046/3046124.png" alt="TikTok">
       <h3>TikTok</h3>
       <p>Watch viral memes and hype videos 🎥</p>
     </a>
 <!-- Instagram -->
-<a href="https://instagram.com/YourHandle" class="community-card" target="_blank">
+<a href="https://www.instagram.com/meme.xium/" class="community-card" target="_blank">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
   <h3>Instagram</h3>
   <p>Meme updates, success highlights, and behind-the-scenes moments 📸🔥</p>
 </a>
 
 <!-- YouTube -->
-<a href="https://youtube.com/YourChannel" class="community-card" target="_blank">
+<a href="https://www.youtube.com/@Memexium" class="community-card" target="_blank">
   <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
   <h3>YouTube</h3>
   <p>Epic meme clips and project updates you can’t miss 🎥💎</p>
